@@ -5,9 +5,14 @@ const path = require('path')
 const ejs = require('ejs')
 const mongoose = require('mongoose')
 
+// user define models
+const post_db = require('./models/post')
+
+
 // routes
 const index = require('./routes/index')
 const post = require('./routes/post')
+const router = require('./routes')(app, post_db);
 
 // node app port
 const PORT = 3000
@@ -32,10 +37,17 @@ db.once('open', function(){
 });
 
 const mongo_pw = "p%40ssWord123"
-mongoose.connect('mongodb+srv://velopert:'+mongo_pw+'@sharks-mongo-xchux.mongodb.net/test?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://velopert:'+mongo_pw+'@sharks-mongo-xchux.mongodb.net/test?retryWrites=true&w=majority',
+{ useNewUrlParser: true}, (err) => {
+    if(err){
+        console.err('mongo connect err', err)
+    }else{
+        console.log('mongo connected')
+    }
+});
 
 
 // run app
 app.listen(PORT, () => {
-    console.log(PORT)
+    console.log('node server running successfully',PORT)
 })
