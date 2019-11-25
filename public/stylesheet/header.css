@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0
+}
+html, body{
+    height: 100%;
+    width: 100%;
+} 
+
+a{
+    text-decoration: none;
+}
+
+ul, li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.all-left_right_margin{
+    margin: 50px 100px;
+}
+
+.tit{
+    font-size: 55px;
+    font-weight: 600;
+    margin-left: 60px;
+}
+
+.navigator{
+    background-color:#d9d9d9;
+    padding: 15px 10px;
+    width: 1365px;
+    border-radius: 10px;
+}
+
+.navigator > ul > li {
+    margin-left:50px;
+}
+
+.nav_right{
+    float: right;
+    margin-right: 110px;
+}
