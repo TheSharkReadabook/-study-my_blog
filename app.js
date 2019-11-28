@@ -12,7 +12,6 @@ const post_db = require('./models/post')
 // routes
 const index = require('./routes/index')
 const post = require('./routes/post')
-const router = require('./routes')(app, post_db);
 
 // node app port
 const PORT = 3000
@@ -29,11 +28,14 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'))
 
 // connnect mongo server
+
+mongoose.Promise = global.Promise
+
 var db = mongoose.connection;
 db.on('error', console.error);
 db.once('open', function(){
     // CONNECTED TO MONGODB SERVER
-    console.log("Connected to mongod server");
+    console.log("Connected to mongod server")
 });
 
 const mongo_pw = "p%40ssWord123"
