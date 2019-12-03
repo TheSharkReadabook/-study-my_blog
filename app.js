@@ -28,10 +28,9 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'))
 
 // connnect mongo server
-
 mongoose.Promise = global.Promise
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error);
 db.once('open', function(){
     // CONNECTED TO MONGODB SERVER
@@ -47,7 +46,6 @@ mongoose.connect('mongodb+srv://velopert:'+mongo_pw+'@sharks-mongo-xchux.mongodb
         console.log('mongo connected')
     }
 });
-
 
 // run app
 app.listen(PORT, () => {

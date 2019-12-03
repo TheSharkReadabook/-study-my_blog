@@ -33,7 +33,6 @@ app.put('/postid/:postid', (req, res) => {
     .catch(err => res.status(500).send(err));
 });
 
-// Delete by todoid
 app.delete('/postid/:postid', (req, res) => {
   Post.deleteByPostid(req.params.postid)
     .then(() => res.sendStatus(200))
