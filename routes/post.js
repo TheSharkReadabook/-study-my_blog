@@ -5,19 +5,19 @@ const app = express.Router()
 app.get('/', (req, res) => {
   Post.findAll()
   .then((posts) => {
-    if (!posts.length) return res.status(404).send({ err: 'post not found from /'})
-    res.send(`find successfully: ${posts}`)
+    if (!posts.length) return res.status(404).send({ err: 'post not found from get /'})
+    res.render('posts', {data:posts})
   })
   .catch(err => res.status(500).send(err))
 })
 
-app.get('/postid:/postid', (req, res) => {
+app.get('/postid/:postid', (req, res) => {
   Post.findOneByPostid(req.params.postid)
-  .then((todo) => {
-    if (!post) return res.status(404).send({ err: 'post not found from postid'})
-    res.send(`findone successfully: ${post}`)
+  .then((post) => {
+    if (!post) return res.status(404).send({ err: 'post not found from get /postid:/postid '})
+    // res.send(`findone successfully: ${post}`)
+    res.render('post', {data:post})
   })
-
   .catch(err => res.status(500).send(err))
 })
 

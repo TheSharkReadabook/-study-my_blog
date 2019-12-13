@@ -4,10 +4,8 @@ const postSchema = new mongoose.Schema({
     postid: String,
     title: String,
     content: String,
-    published_data: { type: Date, default: Date.now}
+    published_date: { type: Date, default: Date.now}
 })
-
-
 
 postSchema.static.create = function (payload){
   const post = new this(payload)
@@ -17,7 +15,6 @@ postSchema.static.create = function (payload){
 postSchema.statics.findAll = function (){
   return this.find({});
 }
-
 
 postSchema.statics.findOneByPostid = function (postid) {
   return this.findOne({ postid });

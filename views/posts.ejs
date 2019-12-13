@@ -1,0 +1,13 @@
+hello, this is posts
+
+<div>
+    <% data.forEach(function(elements){%>
+        <tr>
+            <td><a href='http://localhost:3000/post/postid/<%= elements.postid %>'><%= elements.postid %></a></td>
+            <td><%= elements.title %></td>
+            <td><%= elements.content %></td>
+            <td><%= elements.published_date %></td>
+        </tr>
+    <%})%>
+</div>
+
