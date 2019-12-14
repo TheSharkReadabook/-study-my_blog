@@ -21,8 +21,21 @@ app.get('/postid/:postid', (req, res) => {
   .catch(err => res.status(500).send(err))
 })
 
+// this is example. it would be comment code.
 app.post('/', (req, res) => {
   Post.create(req.body)
+  console.log('req.body' + req.body)
+  .then(post => res.send(post))
+  .catch(err => res.status(500).send(err))
+})
+
+app.get('/write', (req, res) => {
+  res.render('write')
+})
+
+app.post('/write', (req, res) => {
+  Post.create(req.body)
+  // console.log('req.body' + req.body)
   .then(post => res.send(post))
   .catch(err => res.status(500).send(err))
 })

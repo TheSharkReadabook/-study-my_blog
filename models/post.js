@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose')
 
 const postSchema = new mongoose.Schema({
@@ -8,7 +9,9 @@ const postSchema = new mongoose.Schema({
 })
 
 postSchema.static.create = function (payload){
+  console.log('payload' + payload)
   const post = new this(payload)
+  console.log('post' + post)
   return post.save()
 }
 
