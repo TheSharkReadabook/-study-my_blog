@@ -37,9 +37,7 @@ db.once('open', function(){
     console.log("Connected to mongod server")
 });
 
-
-//2019.12.13 @ -> %40 problem it does not work suddenly.
-const mongo_pw = "p%40ssWord123"
+const mongo_pw = "zkfmak"
 const connection = mongoose.connect('mongodb+srv://velopert:'+mongo_pw+'@sharks-mongo-xchux.mongodb.net/test?retryWrites=true&w=majority')
 connection,{ useNewUrlParser: true }, (err) => {
     if(err){
