@@ -4,6 +4,8 @@ const app = express();
 const path = require('path')
 const ejs = require('ejs')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser');                                                                     
+
 
 // user define models
 const post_db = require('./models/post')
@@ -19,6 +21,10 @@ const PORT = 3000
 // routes
 app.use('/', index)
 app.use('/post', post)
+
+//body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended : true}));
 
 //ejs set
 app.set('views', path.join(__dirname, 'views'))
@@ -49,5 +55,5 @@ connection,{ useNewUrlParser: true }, (err) => {
 
 // run app
 app.listen(PORT, () => {
-    console.log('node server running successfully',PORT)
+    console.log('node server running successfully', PORT)
 })
