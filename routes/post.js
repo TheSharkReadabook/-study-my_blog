@@ -1,6 +1,9 @@
 const express = require('express')
 const Post = require('../models/post')
+const bodyParser = require('body-parser')
 const app = express.Router()
+
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
   Post.findAll()
@@ -24,7 +27,6 @@ app.get('/postid/:postid', (req, res) => {
 // this is example. it would be comment code.
 app.post('/', (req, res) => {
   Post.create(req.body)
-  console.log('req.body' + req.body)
   .then(post => res.send(post))
   .catch(err => res.status(500).send(err))
 })
@@ -34,8 +36,8 @@ app.get('/write', (req, res) => {
 })
 
 app.post('/write', (req, res) => {
+  console.log('req.body : ' + req.body)
   Post.create(req.body)
-  // console.log('req.body' + req.body)
   .then(post => res.send(post))
   .catch(err => res.status(500).send(err))
 })
