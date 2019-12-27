@@ -4,7 +4,10 @@ const bodyParser = require('body-parser')
 const app = express.Router()
 
 app.use(bodyParser.json())
+<<<<<<< HEAD
 app.use(express.urlencoded({extended: true}));
+=======
+>>>>>>> 1071882581f085910d47e58cad2a0f9cac0499c7
 
 app.get('/', (req, res) => {
   Post.findAll()
@@ -28,7 +31,10 @@ app.get('/postid/:postid', (req, res) => {
 // this is example. it would be comment code.
 app.post('/', (req, res) => {
   Post.create(req.body)
+<<<<<<< HEAD
   console.log(req.body)
+=======
+>>>>>>> 1071882581f085910d47e58cad2a0f9cac0499c7
   .then(post => res.send(post))
   .catch(err => res.status(500).send(err))
 })
@@ -39,7 +45,10 @@ app.get('/write', (req, res) => {
 
 app.post('/write', (req, res) => {
   console.log('req.body : ' + req.body)
+<<<<<<< HEAD
   console.log('req.body : ' + JSON.stringify(req.body))
+=======
+>>>>>>> 1071882581f085910d47e58cad2a0f9cac0499c7
   Post.create(req.body)
   .then(post => res.send(post))
   .catch(err => res.status(500).send(err))
