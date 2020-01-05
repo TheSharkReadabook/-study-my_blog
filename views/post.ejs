@@ -2,5 +2,9 @@ hello, this is post
 
 <div>
     <%= data %>
-    
+
+    <form method="POST" action="/post/delete/<%= data.postid %>?_method=DELETE">
+        <button type="submit">Delete resource</button>
+    </form>
+
 </div>

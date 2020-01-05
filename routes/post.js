@@ -1,7 +1,10 @@
 const express = require('express')
 const Post = require('../models/post')
 const bodyParser = require('body-parser')
+var methodOverride = require('method-override')
 const app = express.Router()
+
+app.use(methodOverride('_method'))
 
 app.use(bodyParser.json())
 app.use(express.urlencoded({extended: true}));
@@ -61,7 +64,7 @@ app.put('/update/:postid', (req, res) => {
     .catch(err => res.status(500).send(err));
 });
 
-app.delete('/postid/:postid', (req, res) => {
+app.delete('/delete/:postid', (req, res) => {
   Post.deleteByPostid(req.params.postid)
     .then(() => res.sendStatus(200))
     .catch(err => res.status(500).send(err));
