@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose')
 
 const postSchema = new mongoose.Schema({
@@ -31,6 +30,9 @@ postSchema.statics.updateByPostid = function (postid, payload) {
 postSchema.statics.deleteByPostid = function (postid) {
   return this.remove({ postid });
 };
+
+
+
 
 // // create model
 // const Post = mongoose.model('Post', postSchema)
@@ -83,26 +85,4 @@ postSchema.statics.deleteByPostid = function (postid) {
 // })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+module.exports = mongoose.model('Post', postSchema)

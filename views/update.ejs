@@ -1,0 +1,25 @@
+<form method='put' action="/post/update">
+    <table border="1">
+        <% data.forEach(function(elements){%>
+          <tr>
+              <td>id</td>
+              <td><input type='text' name='postid' id='postid' value='<%= elements.postid %>'></td>
+          </tr>
+          <tr>
+              <td>title</td>
+              <td><input type='text' name='title' id='title' value='<%= elements.title %>'></td>
+          </tr>
+          <tr>
+              <td>content</td>
+              <td><input type='text' name='content' id='content' value='<%= elements.content %>'></td>
+          </tr>
+          <tr>
+              <td>
+                  <input type="submit" value="submit!">
+              </td>
+          </tr>
+        <%})%>
+    </table>
+
+
+</form>
