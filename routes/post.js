@@ -38,14 +38,24 @@ app.get('/write', (req, res) => {
 })
 
 app.post('/write', (req, res) => {
-  console.log('req.body : ' + req.body)
   console.log('req.body : ' + JSON.stringify(req.body))
   Post.create(req.body)
   .then(post => res.send(post))
   .catch(err => res.status(500).send(err))
 })
 
-app.put('/postid/:postid', (req, res) => {
+app.get('/update/:postid', (req, res) => {
+  console.log('req.params.postid : ' + JSON.stringify(req.params.postid))
+  Post.findOneByPostid(req.params.postid)
+  .then((post) => {
+    if (!post) return res.status(404).send({ err: 'post not found from get /update:/postid '})
+    res.render('update', {data:post})
+  })
+  .catch(err => res.status(500).send(err))
+})
+
+app.put('/update/:postid', (req, res) => {
+  console.log('this is app.put /update/:postid')
   Post.updateByPostid(req.params.postid, req.body)
     .then(post => res.send(post))
     .catch(err => res.status(500).send(err));
